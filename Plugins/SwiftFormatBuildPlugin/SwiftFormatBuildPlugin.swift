@@ -36,16 +36,8 @@ import PackagePlugin
     @main
     struct SwiftFormatBuildPlugin: BuildToolPlugin {
         func createBuildCommands(context: PluginContext, target: Target) async throws -> [Command] {
-            let toolPath = try context.tool(named: "CommandLineTool").path
-            print("swiftformat while building: \(toolPath)")
-            return [
-                .prebuildCommand(
-                    displayName: "swiftformat",
-                    executable: toolPath,
-                    arguments: ["--target \(target.name)", "--verbose"],
-                    outputFilesDirectory: context.pluginWorkDirectory
-                )
-            ]
+            // Xcode support only
+            return []
         }
     }
 #endif
